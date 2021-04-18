@@ -1,0 +1,16 @@
+.book .card {
+    background-color: white;
+    padding: 10px 20px 11px;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+  }
+
+.pay-button:disabled{
+    background-color: #afafaf;
+    box-shadow: none;
+    cursor: default;
+}
+.pay-button:disabled:hover{
+    box-shadow: none;
+}

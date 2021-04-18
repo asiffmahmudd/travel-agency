@@ -1,0 +1,17 @@
+
+.sidebar ul li{
+    padding-left: 4rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.sidebar ul li svg{
+    width: 20px !important;
+}
+
+@media(max-width: 991px){
+    .sidebar ul li{
+        padding-left: 0;
+        text-align: center;
+    }
+}

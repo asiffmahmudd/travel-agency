@@ -1,0 +1,26 @@
+header nav ul{
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li{
+    margin-left: 1.5rem;
+}
+
+header nav ul li a{
+    font-weight: bold;
+}
+
+header nav ul li:last-child{
+    margin: 0 !important;
+}
+
+header nav ul li button{
+    width: 120px;
+}
+
+@media (max-width: 991px){
+    header nav ul li{
+        margin: 0 !important;
+    }
+}

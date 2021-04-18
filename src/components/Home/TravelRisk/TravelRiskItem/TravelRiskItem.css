@@ -1,0 +1,5 @@
+@media(max-width: 767px){
+    .travel-risk-item .col-md-12{
+        text-align: center !important;
+    }
+}

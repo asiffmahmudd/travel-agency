@@ -1,0 +1,26 @@
+.login .google{
+    position: relative;
+}
+
+.login .google-logo{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.login .google-logo img{
+    height: 22px;
+    width: 22px;
+}
+
+.google{
+    border-radius: 35px;
+}
+
+.login .google{
+    cursor: pointer;
+}
+
+.login .google:hover{
+    background-color: ghostwhite;
+}

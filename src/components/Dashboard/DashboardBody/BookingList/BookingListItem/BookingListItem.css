@@ -1,0 +1,32 @@
+.booking-list-item .status{
+    text-transform: capitalize;
+    width: 120px;
+    padding: 6px;
+}
+
+.booking-list-item .done{
+    background-color: rgba(34, 139, 34, 0.336);
+    color: forestgreen;
+}
+
+.booking-list-item .done:hover{
+    color: forestgreen;
+}
+
+.booking-list-item .pending{
+    background-color: rgba(178, 34, 34, 0.281);
+    color: firebrick;
+}
+
+.booking-list-item .pending:hover{
+    color: firebrick;
+}
+
+.booking-list-item .on-going{
+    background-color: rgba(218, 165, 32, 0.37);
+    color: goldenrod;
+}
+
+.booking-list-item .on-going:hover{
+    color: goldenrod;
+}

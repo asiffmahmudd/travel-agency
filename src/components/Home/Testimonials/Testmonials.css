@@ -1,0 +1,9 @@
+
+
+.testimonials .carousel-item {
+    margin: 0;
+}
+
+.testimonials .carousel-indicators li{
+    background-color: dodgerblue;
+}
