@@ -1,10 +1,10 @@
 import React from 'react';
 
 const TestimonialItem = ({testimonial, index}) => {
-    const {message, name} = testimonial;
+    const {desc, name} = testimonial;
     return (
         <div className={`carousel-item text-center mb-4 col-md-6 testmonial-item ${(index===0) ? "active": ""}`}>
-            <p>{message}</p>
+            <p>{desc}</p>
             <strong>- {name}</strong>
         </div>
         

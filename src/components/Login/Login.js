@@ -1,11 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { UserContext } from '../../App';
+import { signIn } from '../../firebaseManager';
 import google from '../../img/google.png';
 import logo from '../../img/logo.png';
 import './Login.css';
 
 
 const Login = () => {
+
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    let history = useHistory();
+    let location = useLocation();
+
+    let { from } = location.state || { from: { pathname: "/" } };
+
+    const handleSignIn = () => {
+        signIn()
+        .then(data => {
+            setLoggedInUser(data);
+            history.push(from)
+        })
+    }
+
     return (
         <>
             <div className="text-center ">
@@ -16,7 +33,7 @@ const Login = () => {
                     <div className="row justify-content-center">
                         <div className="p-5 col-md-5 mt-5 mb-5 border shadow rounded">
                             <h3>Login With</h3>
-                            <div className="google border p-2 mt-4">
+                            <div className="google border p-2 mt-4" onClick={handleSignIn}>
                                 <span className="google-logo"><img src={google} alt=""/></span>
                                 <span className="text-center w-100 d-inline-block">Continue with Google</span>
                             </div>

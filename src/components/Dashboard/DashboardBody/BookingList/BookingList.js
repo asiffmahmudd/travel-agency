@@ -1,46 +1,28 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './BookingList.css';
 import img1 from '../../../../img/service-1.png';
 import BookingListItem from './BookingListItem/BookingListItem';
-
-const services = [
-    {
-        img: img1,
-        title: "ACCOMMODATION",
-        desc: "Lorem ipsum dolor sit amet elit vehicula cursus.",
-        price: 100,
-        status: "on-going"
-    },
-    {
-        img: img1,
-        title: "ACCOMMODATION",
-        desc: "Lorem ipsum dolor sit amet elit vehicula cursus.",
-        price: 100,
-        status: "done"
-    },
-    {
-        img: img1,
-        title: "ACCOMMODATION",
-        desc: "Lorem ipsum dolor sit amet elit vehicula cursus.",
-        price: 100,
-        status: "pending"
-    },
-    {
-        img: img1,
-        title: "ACCOMMODATION",
-        desc: "Lorem ipsum dolor sit amet elit vehicula cursus.",
-        price: 100,
-        status: "done"
-    }
-]
+import { UserContext } from '../../../../App';
 
 const BookingList = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [bookingList, setBookingList] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:4000/bookings/'+loggedInUser.email)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            setBookingList(data);
+        })
+    }, [])
+
     return (
         <div className="booking-list mt-5">
             <div className="container">
                 <div className="row">
                     {
-                        services.map(service => <BookingListItem service={service} ></BookingListItem>)
+                        bookingList.map(service => <BookingListItem key={service._id} service={service.booking.selectedService.service} status={service.booking.status}></BookingListItem>)
                     }
                 </div>
             </div>

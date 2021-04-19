@@ -32,13 +32,13 @@ const CheckoutForm = ({handlePayment}) => {
         });
 
         if (error) {
-            console.log('[error]', error);
+            alert('[error]', error);
             setPaymentError(error.message);
             setPaymentLoading(false);
         } 
         else {
             setPaymentError(null);
-            console.log('[PaymentMethod]', paymentMethod);
+            // console.log('[PaymentMethod]', paymentMethod);
             handlePayment(paymentMethod.id);
             setPaymentLoading(false);
         }

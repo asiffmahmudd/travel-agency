@@ -19,6 +19,10 @@ header nav ul li button{
     width: 120px;
 }
 
+header .nav-item svg{
+    width: 20px !important;
+}
+
 @media (max-width: 991px){
     header nav ul li{
         margin: 0 !important;

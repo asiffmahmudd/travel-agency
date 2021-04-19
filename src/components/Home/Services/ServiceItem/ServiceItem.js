@@ -1,12 +1,12 @@
 import React from 'react';
 
 const ServiceItem = ({service}) => {
-    const {img,title,desc,price} = service;
+    const {image,title,desc,price} = service;
     return (
         <div className="col-md-5 service-item mt-4 shadow-sm p-3 m-3">
             <div className="row">
                 <div className="col-md-3">
-                    <img src={img} alt=""/>
+                    <img src={image} alt=""/>
                 </div>
                 <div className="col-md-9">
                     <h6>{title}</h6>

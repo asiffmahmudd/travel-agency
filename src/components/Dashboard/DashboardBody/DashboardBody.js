@@ -17,13 +17,13 @@ const DashboardBody = () => {
                 <Sidebar></Sidebar>
                 
                 <div className="dashboard-content col-lg-10">
-                    {/* <Review></Review> */}
+                    <Review></Review>
                     {/* <Book></Book> */}
                     {/* <BookingList></BookingList> */}
                     {/* <OrderList></OrderList> */}
                     {/* <AddService></AddService> */}
                     {/* <AddAdmin></AddAdmin> */}
-                    <ManageService></ManageService>
+                    {/* <ManageService></ManageService> */}
                 </div>
             </div>
         </div>

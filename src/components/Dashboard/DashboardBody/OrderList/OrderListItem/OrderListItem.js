@@ -43,9 +43,9 @@ const OrderListItem = ({order}) => {
             <td>{pay}</td>
             <td>
                 <select name="service" onChange={handleChange} value={selectStatus} id="service" style={{color:fontColor}}>
-                    <option value="done" className="done" value="done">Done</option>
-                    <option value="pending" className="pending" value="pending">Pending</option>
-                    <option value="Don-going" className="on-going" value="on-going">On-Going</option>
+                    <option className="done" value="done">Done</option>
+                    <option className="pending" value="pending">Pending</option>
+                    <option className="on-going" value="on-going">On-Going</option>
                 </select>
             </td>
         </tr>
