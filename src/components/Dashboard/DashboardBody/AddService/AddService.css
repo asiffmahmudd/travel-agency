@@ -1,0 +1,36 @@
+.add-service #photo{
+    opacity: 0;
+    width: 1px;
+    display: inline;
+    position: absolute;
+    bottom: 0;
+    left: 80px;
+}
+
+.add-service .file-upload{
+    position: relative;
+}
+
+.add-service .upload-btn{
+    background-color: rgba(30, 143, 255, 0.315);
+    color: dodgerblue;
+    border: 1px solid dodgerblue;
+    padding: 6px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 6px;
+    width: 150px;
+}
+
+.add-service label{
+    font-weight: bold;
+}
+
+.add-service .upload-btn:hover{
+    cursor: pointer;
+}
+
+.error{
+    color: red;
+    display: block;
+}

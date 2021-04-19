@@ -1,0 +1,20 @@
+.order-list-item .pending{
+    color: firebrick;
+}
+
+.order-list-item .done{
+    color: forestgreen;
+}
+
+.order-list-item .on-going{
+    color: goldenrod !important;
+}
+
+.order-list-item select{
+    border: none;
+}
+
+.order-list-item select:focus{
+    outline: none !important;
+}
+

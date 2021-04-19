@@ -1,0 +1,3 @@
+.manage-services-item .delete:hover, .manage-services-item  .edit:hover{
+    cursor: pointer;
+}

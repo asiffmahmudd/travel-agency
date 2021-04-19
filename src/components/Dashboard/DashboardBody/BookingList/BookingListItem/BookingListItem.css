@@ -11,6 +11,7 @@
 
 .booking-list-item .done:hover{
     color: forestgreen;
+    cursor: unset !important;
 }
 
 .booking-list-item .pending{
@@ -20,13 +21,15 @@
 
 .booking-list-item .pending:hover{
     color: firebrick;
+    cursor: unset !important;
 }
 
 .booking-list-item .on-going{
-    background-color: rgba(218, 165, 32, 0.37);
-    color: goldenrod;
+    background-color: rgba(218, 165, 32, 0.288);
+    color: rgb(218, 165, 32);
 }
 
 .booking-list-item .on-going:hover{
     color: goldenrod;
+    cursor: unset !important;
 }
