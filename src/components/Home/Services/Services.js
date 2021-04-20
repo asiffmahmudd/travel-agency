@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import img1 from '../../../img/service-1.png';
 import ServiceItem from './ServiceItem/ServiceItem';
 
 const Services = () => {
     const [services, setServices] = useState([]);
     
     useEffect(() => {
-        fetch('http://localhost:4000/services')
+        fetch('https://travel-agencyy.herokuapp.com/services')
         .then(res => res.json())
         .then(data => {
             setServices(data);

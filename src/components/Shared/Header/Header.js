@@ -10,7 +10,7 @@ import { faSignOutAlt, faListAlt, faChevronDown, faUser, faEnvelope} from '@fort
 const Header = () => {
 
     const [loggedInUser,setloggedInUser] = useContext(UserContext);
-
+    
     const handleLogOut = () =>{
         signOut()
         .then(data => {
@@ -53,7 +53,7 @@ const Header = () => {
                                                 <span className="dropdown-item"><FontAwesomeIcon icon={faUser} color="dodgerblue" /> {loggedInUser.name}</span>
                                                 <span className="dropdown-item"><FontAwesomeIcon icon={faEnvelope} color="dodgerblue" /> {loggedInUser.email}</span>
 
-                                                <Link className="dropdown-item" to="/dashboard"><FontAwesomeIcon icon={faListAlt} color="dodgerblue" /> Dashboard</Link>
+                                                <Link className="dropdown-item" to="/book"><FontAwesomeIcon icon={faListAlt} color="dodgerblue" /> Dashboard</Link>
                                                 <span className="dropdown-item" onClick={handleLogOut}><FontAwesomeIcon icon={faSignOutAlt} color="dodgerblue" /> Logout</span>
                                             </div>
                                         </div>

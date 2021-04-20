@@ -5,6 +5,11 @@
     padding-bottom: 1rem;
 }
 
+.sidebar ul li:hover{
+    background-color: rgba(44, 144, 243, 0.466);
+    cursor: pointer;
+}
+
 .sidebar ul li svg{
     width: 20px !important;
 }
@@ -14,4 +19,8 @@
         padding-left: 0;
         text-align: center;
     }
+}
+
+.dashboard-body .sidebar{
+    padding: 0;
 }

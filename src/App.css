@@ -7,3 +7,12 @@
 .btn-cstm:hover{
     background-color: rgb(0, 115, 230) !important;
 }
+
+.dashboard-body .row{
+    margin: 0 ;
+}
+
+.dashboard-content{
+    background: ghostwhite;
+    height: 100vh;
+}

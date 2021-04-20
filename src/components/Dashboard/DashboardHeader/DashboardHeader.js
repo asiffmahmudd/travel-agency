@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../img/logo.png';
 import './DashboardHeader.css';
 
-const DashboardHeader = () => {
+const DashboardHeader = ({title}) => {
     return (
         <header className="dashboard-header">
             <div className="container-fluid">
@@ -15,7 +15,7 @@ const DashboardHeader = () => {
                     </div>
                     <div className="col-lg-9">
                         <div className="title">
-                            <h3>Option-title</h3>
+                            <h3>{title}</h3>
                         </div>
                     </div>
                 </div>

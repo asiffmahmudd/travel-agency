@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ServiceItem = ({service}) => {
     const {image,title,desc,price} = service;
@@ -13,7 +14,7 @@ const ServiceItem = ({service}) => {
                     <p>{desc}</p>
                     <strong>${price}</strong>
                     <div className="mt-3">
-                        <button className="btn btn-cstm">Book Now</button>
+                        <Link to="/book"><button className="btn btn-cstm">Book Now</button></Link>
                     </div>
                     
                 </div>

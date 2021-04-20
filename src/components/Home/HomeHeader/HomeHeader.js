@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../Shared/Header/Header';
 import './HomeHeader.css';
 
@@ -12,7 +13,7 @@ const HomeHeader = () => {
                         <div className="banner-text col-md-5 my-auto">
                             <h3 className="text-white">LET'S ENJOY THE TRAVEL</h3>
                             <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula dui sit amet ligula cursus, eget molestie diam accumsan.</p>
-                            <button className="btn btn-cstm">Book Now</button>
+                            <Link to="/book"><button className="btn btn-cstm">Book Now</button></Link>
                         </div>
                     </div>
                         

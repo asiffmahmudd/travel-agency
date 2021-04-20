@@ -7,6 +7,8 @@ import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import CheckoutForm from './CheckoutForm';
 import { useHistory } from 'react-router';
+import DashboardHeader from '../../DashboardHeader/DashboardHeader';
+import Sidebar from '../SideBar/Sidebar';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
@@ -19,6 +21,9 @@ const Book = () => {
     const [selectedService, setSelectedService] = useState(null);
 
     const onSubmit = data => {
+        if(data.service === ""){
+            data.service = document.getElementById("service").value;
+        }
         const tempService = services.find(service => service.service.title === data.service);
         setSelectedService(tempService);
         setUserInfo(data);   
@@ -32,10 +37,9 @@ const Book = () => {
             status: "pending",
             selectedService
         }
-        console.log(bookingDetails);
         document.getElementById('loading').style.display = 'block';
 
-        fetch('http://localhost:4000/addBooking', {
+        fetch('https://travel-agencyy.herokuapp.com/addBooking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -54,7 +58,7 @@ const Book = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:4000/services')
+        fetch('https://travel-agencyy.herokuapp.com/services')
         .then(res => res.json())
         .then(data => {
             setServices(data);
@@ -62,40 +66,51 @@ const Book = () => {
     },[])
 
     return (
-        <div className="book">
-            <div className="form-container mt-5">
-                <form className="col-lg-6" onSubmit={handleSubmit(onSubmit)} style={{display: userInfo ?"none":"block"}}>
-                    <div className="form-group ">
-                        <input type="text" {...register("name")} className="form-control border-0" readOnly id="name" name="name" aria-describedby="Name" defaultValue={loggedInUser.name} placeholder="Your Name" required />
-                    </div>
-                    <div className="form-group">
-                        <input type="email" {...register("email")} className="form-control border-0" readOnly name="email" id="email" defaultValue={loggedInUser.email} placeholder="Email" required/>
-                    </div>
-                    <div className="form-group">
-                        <select {...register("service")} className="form-control border-0" name="service" id="service" required>
-                            {
-                                services.map(service => <option key={service._id}>{service.service.title}</option>)
-                            }
-                        </select>
-                    </div>
-                    <button type="submit" className="btn btn-cstm">Submit</button>
-                    
-                </form>
-                <div id="payment-form" style={{display: userInfo ?"block":"none"}}>
-                    <Elements stripe={stripePromise}>
-                        <CheckoutForm handlePayment={handlePayment}></CheckoutForm>
-                    </Elements>
-                </div>
-                <div className="text-center mt-3 mb-3" id="payment-success" style={{display:'none'}}>
-                    <h1 style={{color:'forestgreen'}}>Successfully booked for the service</h1>
-                </div>
-                <div className="text-center mt-3 mb-3" id="loading" style={{display:'none'}}>
-                    <div className="spinner-border text-primary" role="status">
-                        <span className="sr-only">Loading...</span>
+        <>
+        <DashboardHeader></DashboardHeader>
+        <div className="dashboard-body">
+            <div className="row">
+                <Sidebar></Sidebar>
+                
+                <div className="dashboard-content col-lg-10">
+                    <div id="book">
+                        <div className="form-container mt-5">
+                            <form className="col-lg-6" onSubmit={handleSubmit(onSubmit)} style={{display: userInfo ?"none":"block"}}>
+                                <div className="form-group ">
+                                    <input type="text" {...register("name")} className="form-control border-0" readOnly id="name" name="name" aria-describedby="Name" defaultValue={loggedInUser.name} placeholder="Your Name" required />
+                                </div>
+                                <div className="form-group">
+                                    <input type="email" {...register("email")} className="form-control border-0" readOnly name="email" id="email" defaultValue={loggedInUser.email} placeholder="Email" required/>
+                                </div>
+                                <div className="form-group">
+                                    <select {...register("service")} className="form-control border-0" name="service" id="service" required>
+                                        {
+                                            services.map((service, index) => <option key={service._id}>{service.service.title}</option>)
+                                        }
+                                    </select>
+                                </div>
+                                <button type="submit" className="btn btn-cstm">Submit</button>
+                                
+                            </form>
+                            <div id="payment-form" style={{display: userInfo ?"block":"none"}}>
+                                <Elements stripe={stripePromise}>
+                                    <CheckoutForm handlePayment={handlePayment}></CheckoutForm>
+                                </Elements>
+                            </div>
+                            <div className="text-center mt-3 mb-3" id="payment-success" style={{display:'none'}}>
+                                <h1 style={{color:'forestgreen'}}>Successfully booked for the service</h1>
+                            </div>
+                            <div className="text-center mt-3 mb-3" id="loading" style={{display:'none'}}>
+                                <div className="spinner-border text-primary" role="status">
+                                    <span className="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

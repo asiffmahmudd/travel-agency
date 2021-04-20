@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import './AddService.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
+import DashboardHeader from '../../DashboardHeader/DashboardHeader';
+import Sidebar from '../SideBar/Sidebar';
 
 const AddService = () => {
 
@@ -43,7 +45,7 @@ const AddService = () => {
     };
 
     const submitData = (service) => {
-        fetch('http://localhost:4000/addService', {
+        fetch('https://travel-agencyy.herokuapp.com/addService', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -65,39 +67,50 @@ const AddService = () => {
     }
 
     return (
-        <div className="add-service">
-            <div className="form-container mt-5">
+        <>
+        <DashboardHeader></DashboardHeader>
+        <div className="dashboard-body">
+            <div className="row">
+                <Sidebar></Sidebar>
                 
-                <form className="col-lg-12" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="row bg-white p-5 rounded">
-                        <div className="form-group col-lg-6">
-                            <label htmlFor="title">Service Title</label>
-                            <input type="text" {...register("title")} className="form-control" id="title" name="title" aria-describedby="name" placeholder="Enter Name" required />
-                        </div>
-                        <div className="form-group col-lg-6">
-                            <label htmlFor="price">Price</label>
-                            <input type="number" {...register("price")} className="form-control" name="price" id="price" placeholder="Price" required/>
-                        </div>
-                        <div className="form-group col-lg-6">
-                            <label htmlFor="desc">Description</label>
-                            <textarea type="text" {...register("desc")} className="form-control" name="desc" id="desc" placeholder="Description" style={{'height': '150px'}} required/>
-                        </div>
-                        <div className="form-group file-upload col-lg-6">
-                            <label htmlFor="photo" className="d-block">Upload an Image</label>
-                            <input type="file" {...register("photo")} className="form-control" name="photo" id="photo" required/>
-                            <span className="upload-btn" onClick={handleClick}><FontAwesomeIcon icon={faUpload} color="dodgerblue"/> Upload Image</span>
-                            {fileError && <span className="error">Please upload a jpeg or png file</span>}
+                <div className="dashboard-content col-lg-10">
+                    <div id="add-service">
+                        <div className="form-container mt-5">
+                            
+                            <form className="col-lg-12" onSubmit={handleSubmit(onSubmit)}>
+                                <div className="row bg-white p-5 rounded">
+                                    <div className="form-group col-lg-6">
+                                        <label htmlFor="title">Service Title</label>
+                                        <input type="text" {...register("title")} className="form-control" id="title" name="title" aria-describedby="name" placeholder="Enter Name" required />
+                                    </div>
+                                    <div className="form-group col-lg-6">
+                                        <label htmlFor="price">Price</label>
+                                        <input type="number" {...register("price")} className="form-control" name="price" id="price" placeholder="Price" required/>
+                                    </div>
+                                    <div className="form-group col-lg-6">
+                                        <label htmlFor="desc">Description</label>
+                                        <textarea type="text" {...register("desc")} className="form-control" name="desc" id="desc" placeholder="Description" style={{'height': '150px'}} required/>
+                                    </div>
+                                    <div className="form-group file-upload col-lg-6">
+                                        <label htmlFor="photo" className="d-block">Upload an Image</label>
+                                        <input type="file" {...register("photo")} className="form-control" name="photo" id="photo" required/>
+                                        <span className="upload-btn" onClick={handleClick}><FontAwesomeIcon icon={faUpload} color="dodgerblue"/> Upload Image</span>
+                                        {fileError && <span className="error">Please upload a jpeg or png file</span>}
+                                    </div>
+                                </div>
+                                <button type="submit" className="btn btn-cstm mt-2 float-right">Submit</button>
+                                <div className="text-center mt-3 mb-3" id="loading" style={{display:'none'}}>
+                                    <div className="spinner-border text-primary" role="status">
+                                        <span className="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-cstm mt-2 float-right">Submit</button>
-                    <div className="text-center mt-3 mb-3" id="loading" style={{display:'none'}}>
-                        <div className="spinner-border text-primary" role="status">
-                            <span className="sr-only">Loading...</span>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
+        </>
     );
 };
 

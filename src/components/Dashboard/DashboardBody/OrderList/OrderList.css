@@ -1,42 +1,42 @@
-.order-list .table-container thead tr{
+#order-list .table-container thead tr{
     background-color: ghostwhite;
 }
 
-.order-list .table-container table th:first-child{
+#order-list .table-container table th:first-child{
     border-radius:10px 0 0 10px;
 }
   
-.order-list .table-container  table th:last-child{
+#order-list .table-container  table th:last-child{
     border-radius:0 10px 10px 0;
 }
 
-.order-list .table-container{
+#order-list .table-container{
     border-radius: 20px;
 }
 
-.order-list td:before{
+#order-list td:before{
     font-weight: bold;
 }
 
 @media(max-width: 767px){
-    .order-list table, .order-list thead, .order-list tbody, .order-list th, .order-list td, .order-list tr { 
+    #order-list table, #order-list thead, #order-list tbody, #order-list th, #order-list td, #order-list tr { 
 		display: block; 
 	}
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
-	.order-list thead tr { 
+	#order-list thead tr { 
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
 	}
 	
-	.order-list tr { 
+	#order-list tr { 
         border: 1px solid rgb(231, 229, 229); 
         border-radius: 10px;
         margin-top: 1rem;
     }
 	
-	.order-list td { 
+	#order-list td { 
 		/* Behave  like a "row" */
 		border: none;
 		border-bottom: 1px solid #eee; 
@@ -44,7 +44,7 @@
 		padding-left: 40% !important; 
 	}
 	
-	.order-list td:before { 
+	#order-list td:before { 
 		/* Now like a table header */
 		position: absolute;
 		/* Top/left values mimic padding */
@@ -58,25 +58,25 @@
 	/*
 	Label the data
 	*/
-	.order-list td:nth-of-type(1):before { content: "Name"; }
-    .order-list td:nth-of-type(2):before { content: "Email"; }
-	.order-list td:nth-of-type(3):before { content: "Service"; }
-	.order-list td:nth-of-type(4):before { content: "Pay With"; }
-	.order-list td:nth-of-type(5):before { content: "Status"; }
+	#order-list td:nth-of-type(1):before { content: "Name"; }
+    #order-list td:nth-of-type(2):before { content: "Email"; }
+	#order-list td:nth-of-type(3):before { content: "Service"; }
+	#order-list td:nth-of-type(4):before { content: "Payment"; }
+	#order-list td:nth-of-type(5):before { content: "Status"; }
 
 }
 
 @media(max-width: 588px){
-    .order-list td {
+    #order-list td {
         padding-left: 10px !important;
 		padding-top: 25px !important; 
 	}
-    .order-list td:before { 
+    #order-list td:before { 
 		top: 6px;
 		left: 10px;
     }
 
-    .order-list .table-container{
+    #order-list .table-container{
         padding: 5px !important;
     }
 }

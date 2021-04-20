@@ -1,4 +1,4 @@
-.add-service #photo{
+#add-service #photo{
     opacity: 0;
     width: 1px;
     display: inline;
@@ -7,11 +7,11 @@
     left: 80px;
 }
 
-.add-service .file-upload{
+#add-service .file-upload{
     position: relative;
 }
 
-.add-service .upload-btn{
+#add-service .upload-btn{
     background-color: rgba(30, 143, 255, 0.315);
     color: dodgerblue;
     border: 1px solid dodgerblue;
@@ -22,11 +22,11 @@
     width: 150px;
 }
 
-.add-service label{
+#add-service label{
     font-weight: bold;
 }
 
-.add-service .upload-btn:hover{
+#add-service .upload-btn:hover{
     cursor: pointer;
 }
 

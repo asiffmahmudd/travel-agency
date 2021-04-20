@@ -18,6 +18,16 @@ export const signIn = () => {
             email: result.user.email,
             photo: result.user.photoURL
         }
+        fetch('https://travel-agencyy.herokuapp.com/admins/'+user.email)
+            .then(res => res.json())
+            .then(result => {
+                if(result.length > 0){
+                    user.isAdmin = true;
+                }
+                else{
+                    user.isAdmin = false;
+                }
+            })
         return user;
     }).catch((error) => {
         alert(error.message)

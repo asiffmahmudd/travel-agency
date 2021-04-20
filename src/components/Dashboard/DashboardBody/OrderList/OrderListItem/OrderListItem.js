@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './OrderListItem.css';
 
-const OrderListItem = ({order}) => {
-    const {name, email, service, pay, status} = order;
+const OrderListItem = ({order, id}) => {
+    const {name, email, service} = order.booking.user;
+    const status = order.booking.status;
 
     let color = "";
     if(status=== "done"){
@@ -31,16 +32,33 @@ const OrderListItem = ({order}) => {
         else{
             setFontColor("goldenrod");
         }
+
+        const orderStatus ={
+            status: event.target.value
+        }
+        document.getElementById("loading").style.display = 'block';
+        fetch('https://travel-agencyy.herokuapp.com/modifyBookingStatus/'+id, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderStatus)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data){
+                document.getElementById("loading").style.display = 'none';
+            }
+        })
     }
 
     
 
     return (
+        <>
         <tr className="order-list-item">
             <td>{name}</td>
             <td>{email}</td>
             <td>{service}</td>
-            <td>{pay}</td>
+            <td>Paid</td>
             <td>
                 <select name="service" onChange={handleChange} value={selectStatus} id="service" style={{color:fontColor}}>
                     <option className="done" value="done">Done</option>
@@ -49,6 +67,7 @@ const OrderListItem = ({order}) => {
                 </select>
             </td>
         </tr>
+        </>
     );
 };
 

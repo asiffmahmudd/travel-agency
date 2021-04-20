@@ -1,32 +1,54 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './BookingList.css';
-import img1 from '../../../../img/service-1.png';
 import BookingListItem from './BookingListItem/BookingListItem';
 import { UserContext } from '../../../../App';
+import Sidebar from '../SideBar/Sidebar';
+import DashboardHeader from '../../DashboardHeader/DashboardHeader';
 
 const BookingList = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [bookingList, setBookingList] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:4000/bookings/'+loggedInUser.email)
+        document.getElementById("loading").style.display = 'block';
+        fetch('https://travel-agencyy.herokuapp.com/bookings/'+loggedInUser.email)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            document.getElementById("loading").style.display = 'none';
             setBookingList(data);
         })
     }, [])
 
     return (
-        <div className="booking-list mt-5">
-            <div className="container">
-                <div className="row">
-                    {
-                        bookingList.map(service => <BookingListItem key={service._id} service={service.booking.selectedService.service} status={service.booking.status}></BookingListItem>)
-                    }
+        <>
+        <DashboardHeader></DashboardHeader>
+        <div className="dashboard-body">
+            <div className="row">
+                <Sidebar></Sidebar>
+                
+                <div className="dashboard-content col-lg-10">
+                    <div className="mt-5" id="booking-list">
+                        <div className="container">
+                            <div className="text-center mt-3 mb-3" id="loading" style={{display:'none'}}>
+                                <div className="spinner-border text-primary" role="status">
+                                    <span className="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                            <div className="row">
+                                {
+                                    bookingList.length === 0 &&
+                                    <h1 className="col-md-12 text center mt-5 mb-t">No bookings found</h1>
+                                }
+                                {
+                                    bookingList.map(booking => <BookingListItem key={booking._id} booking={booking}></BookingListItem>)
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
