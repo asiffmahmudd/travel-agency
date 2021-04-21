@@ -23,7 +23,7 @@ const AddAdmin = () => {
 
     return (
         <>
-        <DashboardHeader></DashboardHeader>
+        <DashboardHeader title="Add Admin"></DashboardHeader>
         <div className="dashboard-body">
             <div className="row">
                 <Sidebar></Sidebar>

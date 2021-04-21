@@ -6,9 +6,9 @@ import { UserContext } from '../../../../App';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import CheckoutForm from './CheckoutForm';
-import { useHistory } from 'react-router';
 import DashboardHeader from '../../DashboardHeader/DashboardHeader';
 import Sidebar from '../SideBar/Sidebar';
+import { useParams } from 'react-router';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
@@ -16,10 +16,11 @@ const Book = () => {
     const { register, handleSubmit, reset } = useForm();
     const [userInfo, setUserInfo] = useState(null);
     const [services, setServices] = useState([]);
-    const history = useHistory();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [selectedService, setSelectedService] = useState(null);
     const [charge, setCharge] = useState(null);
+
+    let {id} = useParams();
 
     const onSubmit = data => {
         if(data.service === ""){
@@ -68,13 +69,28 @@ const Book = () => {
         .then(res => res.json())
         .then(data => {
             setServices(data);
-            setCharge(data[0].service.price);
+            if(id){
+                const tempService = data.find(service => service._id === id);
+
+                const options = document.getElementById('service').children;
+                let i = 0;
+                for(i = 0; i < options.length; i++){
+                    if(options[i].value === tempService.service.title){
+                        break;
+                    }
+                }
+                options[i].selected = "selected";
+                setCharge(tempService.service.price);
+            }
+            else{
+                setCharge(data[0].service.price);
+            }
         })
     },[])
 
     return (
         <>
-        <DashboardHeader></DashboardHeader>
+        <DashboardHeader title="Book"></DashboardHeader>
         <div className="dashboard-body">
             <div className="row">
                 <Sidebar></Sidebar>

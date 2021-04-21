@@ -68,7 +68,7 @@ const AddService = () => {
 
     return (
         <>
-        <DashboardHeader></DashboardHeader>
+        <DashboardHeader title="Add Service"></DashboardHeader>
         <div className="dashboard-body">
             <div className="row">
                 <Sidebar></Sidebar>

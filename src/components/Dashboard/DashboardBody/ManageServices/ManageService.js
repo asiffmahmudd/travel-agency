@@ -24,7 +24,7 @@ const ManageService = () => {
 
     return (
         <>
-        <DashboardHeader></DashboardHeader>
+        <DashboardHeader title="Manage Service"></DashboardHeader>
         <div className="dashboard-body">
             <div className="row">
                 <Sidebar></Sidebar>
@@ -39,7 +39,7 @@ const ManageService = () => {
                         <div className="container">
                             <div className="row">
                                 {
-                                    services.length == 0 &&
+                                    services.length === 0 &&
                                     <h1 className="col-md-12 text-center">No services found</h1>
                                 }
                                 {

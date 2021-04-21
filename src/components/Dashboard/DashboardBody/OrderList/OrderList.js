@@ -4,44 +4,6 @@ import Sidebar from '../SideBar/Sidebar';
 import './OrderList.css';
 import OrderListItem from './OrderListItem/OrderListItem';
 
-const orderList1 = [
-    {
-        name: "Ratna Begum",
-        email: "ratna@gmail.com",
-        service: "Test service",
-        pay: "With card",
-        status: "done"
-    },
-    {
-        name: "SHarna Begum",
-        email: "Sharna@gmail.com",
-        service: "Untest service",
-        pay: "With card",
-        status: "pending"
-    },
-    {
-        name: "Khadiza Begum",
-        email: "khadiza@gmail.com",
-        service: "No service",
-        pay: "With card",
-        status: "on-going"
-    },
-    {
-        name: "Faruq Mondol",
-        email: "faruq@gmail.com",
-        service: "Jomidari service",
-        pay: "With card",
-        status: "done"
-    },
-    {
-        name: "Shibli Sarkar",
-        email: "sarkar@gmail.com",
-        service: "Khet service",
-        pay: "With card",
-        status: "pending"
-    },
-]
-
 const OrderList = () => {
 
     const [orderList, setOrderList] = useState([]);
@@ -58,7 +20,7 @@ const OrderList = () => {
 
     return (
         <>
-        <DashboardHeader></DashboardHeader>
+        <DashboardHeader title="Order List"></DashboardHeader>
         <div className="dashboard-body">
             <div className="row">
                 <Sidebar></Sidebar>

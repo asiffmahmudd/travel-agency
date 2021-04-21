@@ -17,11 +17,11 @@ const BookingList = () => {
             document.getElementById("loading").style.display = 'none';
             setBookingList(data);
         })
-    }, [])
+    }, [loggedInUser])
 
     return (
         <>
-        <DashboardHeader></DashboardHeader>
+        <DashboardHeader title="Booking List"></DashboardHeader>
         <div className="dashboard-body">
             <div className="row">
                 <Sidebar></Sidebar>

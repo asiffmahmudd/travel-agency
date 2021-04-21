@@ -25,7 +25,7 @@ const Services = () => {
                 </div>
                 <div className="row mt-4 justify-content-center">
                     {
-                        services.map(service => <ServiceItem key={service._id} service={service.service}></ServiceItem>)
+                        services.map(service => <ServiceItem key={service._id} id={service._id} service={service.service}></ServiceItem>)
                     }
                 </div>
             </div>

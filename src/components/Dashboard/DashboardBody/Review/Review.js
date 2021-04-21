@@ -31,7 +31,7 @@ const Review = () => {
 
     return (
         <>
-        <DashboardHeader></DashboardHeader>
+        <DashboardHeader title="Review"></DashboardHeader>
         <div className="dashboard-body">
             <div className="row">
                 <Sidebar></Sidebar>
