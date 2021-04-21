@@ -5,9 +5,11 @@ const Services = () => {
     const [services, setServices] = useState([]);
     
     useEffect(() => {
+        document.getElementById("loading").style.display = 'block';
         fetch('https://travel-agencyy.herokuapp.com/services')
         .then(res => res.json())
         .then(data => {
+            document.getElementById("loading").style.display = 'none';
             setServices(data);
         })
     }, [])
@@ -16,6 +18,11 @@ const Services = () => {
         <section className="services mt-5 mb-5">
             <div className="container">
                 <h3 className="text-center">Services</h3>
+                <div className="text-center mt-3 mb-3" id="loading" style={{display:'none'}}>
+                    <div className="spinner-border text-primary" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
                 <div className="row mt-4 justify-content-center">
                     {
                         services.map(service => <ServiceItem key={service._id} service={service.service}></ServiceItem>)

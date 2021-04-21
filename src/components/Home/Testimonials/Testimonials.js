@@ -9,20 +9,29 @@ const Testimonials = () => {
     const[testimonials, setTestimonials] = useState([]);
     
     useEffect(() => {
+        document.getElementById("loading").style.display = 'block';
         fetch('https://travel-agencyy.herokuapp.com/testimonials')
         .then(res => res.json())
         .then(data => {
             setTestimonials(data);
+            document.getElementById("loading").style.display = 'none';
         });
     }, [])
 
     return (
         <section className="testimonials bg-light mt-5 pt-5 pb-5">
             <h3 className="text-center section-title">OUR TESTIMONIALS</h3>
+            
             <div className="text-center quote-img">
                 <img src={quote} style={{'height': '100px'}} alt=""/>
             </div>
             
+            <div className="text-center mt-3 mb-3" id="loading" style={{display:'none'}}>
+                <div className="spinner-border text-primary" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            </div>
+
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                 <ol className="carousel-indicators">
                     {
