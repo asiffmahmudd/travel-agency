@@ -19,6 +19,7 @@ const Book = () => {
     const history = useHistory();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [selectedService, setSelectedService] = useState(null);
+    const [charge, setCharge] = useState(null);
 
     const onSubmit = data => {
         if(data.service === ""){
@@ -57,11 +58,17 @@ const Book = () => {
         })
     }
 
+    const handleCharge = (event) => {
+        const tempService = services.find(service => service.service.title === event.target.value);
+        setCharge(tempService.service.price);
+    }
+
     useEffect(() => {
         fetch('https://travel-agencyy.herokuapp.com/services')
         .then(res => res.json())
         .then(data => {
             setServices(data);
+            setCharge(data[0].service.price);
         })
     },[])
 
@@ -83,12 +90,13 @@ const Book = () => {
                                     <input type="email" {...register("email")} className="form-control border-0" readOnly name="email" id="email" defaultValue={loggedInUser.email} placeholder="Email" required/>
                                 </div>
                                 <div className="form-group">
-                                    <select {...register("service")} className="form-control border-0" name="service" id="service" required>
+                                    <select {...register("service")} className="form-control border-0" onChange={handleCharge} name="service" id="service" required>
                                         {
                                             services.map((service, index) => <option key={service._id}>{service.service.title}</option>)
                                         }
                                     </select>
                                 </div>
+                                <p><strong>Your Charge is {charge}</strong></p>
                                 <button type="submit" className="btn btn-cstm">Submit</button>
                                 
                             </form>
