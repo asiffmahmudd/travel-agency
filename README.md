@@ -1,4 +1,4 @@
-<h1>An Ecommerce site for buying books</h1>
+<h1>A travel advising service provider site</h1>
 <h3>
   Features:
   <ul>
