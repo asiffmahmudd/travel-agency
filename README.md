@@ -12,5 +12,5 @@
     
   </ul>
 </h3>
-<h3>Technologies used: React, Express, NodeJs, MongoDB, Bootstrap, HTML, CSS, Firebase, Heroku</h3>
+<h3>Technologies used: React, Express, NodeJs, MongoDB, Bootstrap, JSX, CSS, Firebase, Heroku</h3>
 <h1><a href="https://travel-agency-a2b4d.web.app/" target="_blank">Click here to see live</a></h1>
