@@ -7,7 +7,7 @@ import img3 from '../../../img/travel-risk-3.png';
 
 const TravelRisk = () => {
     return (
-        <section className="travel-risk bg-light mt-5 mb-5">
+        <section className="travel-risk bg-light mt-5 mb-5" id="about">
             <div className="container">
                 <div className="row text-center mt-5">
                     <h3 className="text-center col-md-12 mt-5 section-title">WE COVER TRAVEL RISKS</h3>

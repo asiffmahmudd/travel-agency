@@ -1,10 +1,21 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyC00YF0KyzmRJ6p4b6izJAdnU3-t_zMj48",
-    authDomain: "travel-agency-a2b4d.firebaseapp.com",
-    projectId: "travel-agency-a2b4d",
-    storageBucket: "travel-agency-a2b4d.appspot.com",
-    messagingSenderId: "32826680460",
-    appId: "1:32826680460:web:1ac7aac63f0d1978da47a9"
-};
+import firebase from "firebase/app"
+import "firebase/auth"
+import "firebase/firestore";
 
-export default firebaseConfig;
+const firebaseConfig = {
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID
+}
+
+let app;
+
+if (!firebase.apps.length) {
+    app = firebase.initializeApp(firebaseConfig);
+}
+
+export const auth = app.auth()
+export default app

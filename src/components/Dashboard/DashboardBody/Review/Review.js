@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './Review.css';
 import { useForm } from "react-hook-form";
-import { UserContext } from '../../../../App';
 import DashboardHeader from '../../DashboardHeader/DashboardHeader';
 import Sidebar from '../SideBar/Sidebar';
+import { useAuth } from '../../../../Context/AuthContext';
 
 const Review = () => {
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {loggedInUser} = useAuth()
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {

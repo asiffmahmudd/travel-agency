@@ -1,23 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../../App';
-import { signOut } from '../../../firebaseManager';
 import logo from '../../../img/logo.png';
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOutAlt, faListAlt, faChevronDown, faUser, faEnvelope} from '@fortawesome/free-solid-svg-icons'
+import { useAuth } from '../../../Context/AuthContext';
 
 const Header = () => {
 
-    const [loggedInUser,setloggedInUser] = useContext(UserContext);
+    const {loggedInUser, signOut} = useAuth()
     
     const handleLogOut = () =>{
-        signOut()
-        .then(data => {
-            if(data){
-                setloggedInUser({})
-            }
-        })
+        signOut();
     }
 
     return (
@@ -36,10 +30,10 @@ const Header = () => {
                                 <Link className="nav-link" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="#">About</Link>
+                                <a className="nav-link" href="#about">About</a>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="#">Services</Link>
+                                <a className="nav-link" href="#services">Services</a>
                             </li>
                             {
                                 loggedInUser?.email &&

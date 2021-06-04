@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './BookingList.css';
 import BookingListItem from './BookingListItem/BookingListItem';
-import { UserContext } from '../../../../App';
 import Sidebar from '../SideBar/Sidebar';
 import DashboardHeader from '../../DashboardHeader/DashboardHeader';
+import { useAuth } from '../../../../Context/AuthContext';
 
 const BookingList = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {loggedInUser} = useAuth()
     const [bookingList, setBookingList] = useState([]);
 
     useEffect(() => {

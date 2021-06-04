@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './Sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faListAlt, faCommentDots, faThList, faPlus, faTh, faUserPlus} from '@fortawesome/free-solid-svg-icons'
-import { UserContext } from '../../../../App';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../../Context/AuthContext';
 
 
 const Sidebar = ({handleDashboard}) => {
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {loggedInUser} = useAuth()
 
     return (
         <div className="sidebar pt-4 col-lg-2">

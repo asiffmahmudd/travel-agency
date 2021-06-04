@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import './Book.css';
-import { UserContext } from '../../../../App';
 
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
@@ -9,6 +8,7 @@ import CheckoutForm from './CheckoutForm';
 import DashboardHeader from '../../DashboardHeader/DashboardHeader';
 import Sidebar from '../SideBar/Sidebar';
 import { useParams } from 'react-router';
+import { useAuth } from '../../../../Context/AuthContext';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
@@ -16,7 +16,7 @@ const Book = () => {
     const { register, handleSubmit, reset } = useForm();
     const [userInfo, setUserInfo] = useState(null);
     const [services, setServices] = useState([]);
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {loggedInUser} = useAuth();
     const [selectedService, setSelectedService] = useState(null);
     const [charge, setCharge] = useState(null);
 
@@ -86,7 +86,7 @@ const Book = () => {
                 setCharge(data[0].service.price);
             }
         })
-    },[])
+    },[id])
 
     return (
         <>

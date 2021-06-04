@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { UserContext } from '../../App';
-import { signIn } from '../../firebaseManager';
+import { useAuth } from '../../Context/AuthContext';
 import google from '../../img/google.png';
 import logo from '../../img/logo.png';
 import './Login.css';
@@ -9,18 +8,15 @@ import './Login.css';
 
 const Login = () => {
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const {signIn} = useAuth()
     let history = useHistory();
     let location = useLocation();
 
     let { from } = location.state || { from: { pathname: "/" } };
 
-    const handleSignIn = () => {
-        signIn()
-        .then(data => {
-            setLoggedInUser(data);
-            history.push(from)
-        })
+    const handleSignIn = async () => {
+        await signIn()
+        history.push(from)
     }
 
     return (
