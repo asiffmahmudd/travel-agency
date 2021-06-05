@@ -8,7 +8,7 @@ import './Login.css';
 
 const Login = () => {
 
-    const {signIn} = useAuth()
+    const {signIn, saveToken} = useAuth()
     let history = useHistory();
     let location = useLocation();
 
@@ -16,7 +16,11 @@ const Login = () => {
 
     const handleSignIn = async () => {
         await signIn()
-        history.push(from)
+        saveToken()
+        .then(idToken => {
+            localStorage.setItem('token', idToken)
+            history.push(from)
+        })
     }
 
     return (

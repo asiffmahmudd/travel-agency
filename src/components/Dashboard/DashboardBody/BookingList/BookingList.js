@@ -11,7 +11,13 @@ const BookingList = () => {
 
     useEffect(() => {
         document.getElementById("loading").style.display = 'block';
-        fetch('https://travel-agencyy.herokuapp.com/bookings/'+loggedInUser.email)
+        fetch('https://travel-agencyy.herokuapp.com/bookings/'+loggedInUser.email, {
+            method: 'GET',
+            headers: { 
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
         .then(res => res.json())
         .then(data => {
             document.getElementById("loading").style.display = 'none';

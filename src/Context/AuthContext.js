@@ -64,11 +64,24 @@ export function AuthProvider({children}){
         });
     }
 
+    const saveToken = () => {
+        return firebase.auth().currentUser.getIdToken(true)
+        .then(function(idToken) {
+            return idToken;
+        }).catch(function(error) {
+            alert(error.message)
+        });
+    }
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async user => {
             let currentUser;
             if(user){
                 currentUser = formatUser(user)
+                saveToken()
+                .then(idToken => {
+                    localStorage.setItem('token', idToken)
+                });
                 checkAdmin(currentUser)
                 .then(res => currentUser = res)
             }
@@ -77,6 +90,8 @@ export function AuthProvider({children}){
         })
         return unsubscribe
     }, [])
+
+
 
     const value = { loggedInUser, signIn, signOut }
 
