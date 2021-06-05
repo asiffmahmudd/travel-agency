@@ -89,7 +89,10 @@ export function AuthProvider({children}){
                     setLoading(false);
                 })
             }
-            
+            else{
+                setLoggedInUser(currentUser);
+                setLoading(false);
+            }
         })
         return unsubscribe
     }, [])

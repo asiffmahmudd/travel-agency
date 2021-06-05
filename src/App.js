@@ -22,7 +22,6 @@ import { AuthProvider } from './Context/AuthContext';
 export const UserContext = createContext();
 
 function App() {
-  
   return (
       <AuthProvider>
         <Router>
