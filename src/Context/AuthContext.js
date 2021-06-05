@@ -83,17 +83,20 @@ export function AuthProvider({children}){
                     localStorage.setItem('token', idToken)
                 });
                 checkAdmin(currentUser)
-                .then(res => currentUser = res)
+                .then(res => {
+                    currentUser = res
+                    setLoggedInUser(currentUser);
+                    setLoading(false);
+                })
             }
-            setLoggedInUser(currentUser);
-            setLoading(false);
+            
         })
         return unsubscribe
     }, [])
 
 
 
-    const value = { loggedInUser, signIn, signOut }
+    const value = { loggedInUser, signIn, signOut, saveToken }
 
     return (
         <AuthContext.Provider value={value}>

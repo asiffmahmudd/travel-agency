@@ -8,9 +8,11 @@ import { useAuth } from '../../../../Context/AuthContext';
 const BookingList = () => {
     const {loggedInUser} = useAuth()
     const [bookingList, setBookingList] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         document.getElementById("loading").style.display = 'block';
+        setLoading(true)
         fetch('https://travel-agencyy.herokuapp.com/bookings/'+loggedInUser.email, {
             method: 'GET',
             headers: { 
@@ -22,6 +24,11 @@ const BookingList = () => {
         .then(data => {
             document.getElementById("loading").style.display = 'none';
             setBookingList(data);
+            setLoading(false)
+        })
+        .catch(e => {
+            alert(e.message);
+            setLoading(false);
         })
     }, [loggedInUser])
 
@@ -42,7 +49,7 @@ const BookingList = () => {
                             </div>
                             <div className="row">
                                 {
-                                    bookingList.length === 0 &&
+                                    !loading && bookingList.length === 0 &&
                                     <h1 className="col-md-12 text center mt-5 mb-t">No bookings found</h1>
                                 }
                                 {

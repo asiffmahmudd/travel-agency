@@ -5,7 +5,7 @@ import { useAuth } from '../../Context/AuthContext';
 const PrivateRoute = ({ children, ...rest }) => {
 
     const {loggedInUser} = useAuth();
-
+    console.log(loggedInUser)
     return (
         <Route
             {...rest}

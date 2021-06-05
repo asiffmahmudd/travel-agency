@@ -15,12 +15,17 @@ const Login = () => {
     let { from } = location.state || { from: { pathname: "/" } };
 
     const handleSignIn = async () => {
-        await signIn()
-        saveToken()
-        .then(idToken => {
-            localStorage.setItem('token', idToken)
-            history.push(from)
-        })
+        try{
+            await signIn();
+            saveToken()
+            .then(idToken => {
+                localStorage.setItem('token', idToken)
+                history.push(from)
+            })
+        }
+        catch(e){
+            alert(e.message)
+        }
     }
 
     return (

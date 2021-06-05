@@ -7,14 +7,17 @@ import OrderListItem from './OrderListItem/OrderListItem';
 const OrderList = () => {
 
     const [orderList, setOrderList] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect( () =>{
+        setLoading(true)
         document.getElementById("loading").style.display = 'block';
         fetch('https://travel-agencyy.herokuapp.com/bookings')
         .then(res => res.json())
         .then(data => {
             setOrderList(data);
             document.getElementById("loading").style.display = 'none';
+            setLoading(false)
         })
     }, [])
 
@@ -33,7 +36,7 @@ const OrderList = () => {
                             </div>
                         </div>
                         {
-                            orderList.length === 0 &&
+                            !loading && orderList.length === 0 &&
                             <h1 className="text-center mt-5">No orders found</h1>
                         }
                         {
