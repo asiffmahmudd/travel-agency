@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import DashboardHeader from '../../DashboardHeader/DashboardHeader';
 import Sidebar from '../SideBar/Sidebar';
 import { useAuth } from '../../../../Context/AuthContext';
+import { serverUrl } from '../../../../ServerUrl';
 
 const Review = () => {
 
@@ -12,7 +13,7 @@ const Review = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         document.getElementById('loading').style.display = 'block';
-        fetch('https://travel-agencyy.herokuapp.com/addTestimonials',{
+        fetch(serverUrl+'/addTestimonials',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

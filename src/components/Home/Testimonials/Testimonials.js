@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import quote from '../../../img/quote.png';
+import { serverUrl } from '../../../ServerUrl';
 import TestimonialItem from './TestimonialItem/TestimonialItem';
 import './Testmonials.css';
 
@@ -10,7 +11,7 @@ const Testimonials = () => {
     
     useEffect(() => {
         document.getElementById("loading").style.display = 'block';
-        fetch('https://travel-agencyy.herokuapp.com/testimonials')
+        fetch(serverUrl+'/testimonials')
         .then(res => res.json())
         .then(data => {
             setTestimonials(data);

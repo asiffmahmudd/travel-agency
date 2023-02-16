@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
 import DashboardHeader from '../../DashboardHeader/DashboardHeader';
 import Sidebar from '../SideBar/Sidebar';
+import { serverUrl } from '../../../../ServerUrl';
 
 const AddService = () => {
 
@@ -45,7 +46,7 @@ const AddService = () => {
     };
 
     const submitData = (service) => {
-        fetch('https://travel-agencyy.herokuapp.com/addService', {
+        fetch(serverUrl+'/addService', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

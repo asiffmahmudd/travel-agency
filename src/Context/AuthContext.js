@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
 import firebase from 'firebase';
+import { serverUrl } from "../ServerUrl";
 
 const AuthContext = createContext()
 
@@ -22,7 +23,7 @@ export function AuthProvider({children}){
     });
 
     const checkAdmin = (user) => {
-        return fetch('https://travel-agencyy.herokuapp.com/admins/'+user.email)
+        return fetch(serverUrl+'/admins/'+user.email)
         .then(res => res.json())
         .then(result => {
             if(result.length > 0){

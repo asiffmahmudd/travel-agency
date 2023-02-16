@@ -2,6 +2,7 @@ import firebaseConfig from "./firebaseConfig";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import { serverUrl } from "./ServerUrl";
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -18,7 +19,7 @@ export const signIn = () => {
             email: result.user.email,
             photo: result.user.photoURL
         }
-        fetch('https://travel-agencyy.herokuapp.com/admins/'+user.email)
+        fetch(serverUrl+'/admins/'+user.email)
             .then(res => res.json())
             .then(result => {
                 if(result.length > 0){

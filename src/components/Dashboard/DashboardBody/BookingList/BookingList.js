@@ -4,6 +4,7 @@ import BookingListItem from './BookingListItem/BookingListItem';
 import Sidebar from '../SideBar/Sidebar';
 import DashboardHeader from '../../DashboardHeader/DashboardHeader';
 import { useAuth } from '../../../../Context/AuthContext';
+import { serverUrl } from '../../../../ServerUrl';
 
 const BookingList = () => {
     const {loggedInUser} = useAuth()
@@ -13,7 +14,7 @@ const BookingList = () => {
     useEffect(() => {
         document.getElementById("loading").style.display = 'block';
         setLoading(true)
-        fetch('https://travel-agencyy.herokuapp.com/bookings/'+loggedInUser.email, {
+        fetch(serverUrl+'/bookings/'+loggedInUser.email, {
             method: 'GET',
             headers: { 
                 'Content-Type': 'application/json',

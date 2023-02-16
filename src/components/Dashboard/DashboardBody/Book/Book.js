@@ -9,6 +9,7 @@ import DashboardHeader from '../../DashboardHeader/DashboardHeader';
 import Sidebar from '../SideBar/Sidebar';
 import { useParams } from 'react-router';
 import { useAuth } from '../../../../Context/AuthContext';
+import { serverUrl } from '../../../../ServerUrl';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
@@ -41,7 +42,7 @@ const Book = () => {
         }
         document.getElementById('loading').style.display = 'block';
 
-        fetch('https://travel-agencyy.herokuapp.com/addBooking', {
+        fetch(serverUrl+'/addBooking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -65,7 +66,7 @@ const Book = () => {
     }
 
     useEffect(() => {
-        fetch('https://travel-agencyy.herokuapp.com/services')
+        fetch(serverUrl+'/services')
         .then(res => res.json())
         .then(data => {
             setServices(data);

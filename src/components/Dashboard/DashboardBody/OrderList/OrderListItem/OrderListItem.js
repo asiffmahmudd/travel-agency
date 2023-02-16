@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { serverUrl } from '../../../../../ServerUrl';
 import './OrderListItem.css';
 
 const OrderListItem = ({order, id}) => {
@@ -37,7 +38,7 @@ const OrderListItem = ({order, id}) => {
             status: event.target.value
         }
         document.getElementById("loading").style.display = 'block';
-        fetch('https://travel-agencyy.herokuapp.com/modifyBookingStatus/'+id, {
+        fetch(serverUrl+'/modifyBookingStatus/'+id, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(orderStatus)

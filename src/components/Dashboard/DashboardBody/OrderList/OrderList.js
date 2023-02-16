@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { serverUrl } from '../../../../ServerUrl';
 import DashboardHeader from '../../DashboardHeader/DashboardHeader';
 import Sidebar from '../SideBar/Sidebar';
 import './OrderList.css';
@@ -12,7 +13,7 @@ const OrderList = () => {
     useEffect( () =>{
         setLoading(true)
         document.getElementById("loading").style.display = 'block';
-        fetch('https://travel-agencyy.herokuapp.com/bookings')
+        fetch(serverUrl+'/bookings')
         .then(res => res.json())
         .then(data => {
             setOrderList(data);

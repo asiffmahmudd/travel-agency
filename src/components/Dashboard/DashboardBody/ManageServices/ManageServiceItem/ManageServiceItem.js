@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import './ManageServiceItem.css';
+import { serverUrl } from '../../../../../ServerUrl';
 
 const ManageServiceItem = ({service, id, setChange}) => {
     const {image, desc, title} = service;
@@ -9,7 +10,7 @@ const ManageServiceItem = ({service, id, setChange}) => {
     const handleDelete = (id) => {
         setChange(false);
         document.getElementById("loading").style.display = 'block';
-        fetch('https://travel-agencyy.herokuapp.com/deleteService/'+id,{
+        fetch(serverUrl+'/deleteService/'+id,{
             method: 'DELETE'
         })
         .then(res => res.json())

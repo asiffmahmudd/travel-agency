@@ -3,6 +3,7 @@ import './ManageService.css';
 import ManageServiceItem from './ManageServiceItem/ManageServiceItem';
 import DashboardHeader from '../../DashboardHeader/DashboardHeader';
 import Sidebar from '../SideBar/Sidebar';
+import { serverUrl } from '../../../../ServerUrl';
 
 
 
@@ -14,7 +15,7 @@ const ManageService = () => {
 
     useEffect(() => {
         document.getElementById("loading").style.display = 'block';
-        fetch('https://travel-agencyy.herokuapp.com/services')
+        fetch(serverUrl+'/services')
         .then(res => res.json())
         .then(data => {
             document.getElementById("loading").style.display = 'none';

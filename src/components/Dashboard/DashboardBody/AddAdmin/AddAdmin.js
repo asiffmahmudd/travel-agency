@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { serverUrl } from '../../../../ServerUrl';
 import DashboardHeader from '../../DashboardHeader/DashboardHeader';
 import Sidebar from '../SideBar/Sidebar';
 import './AddAdmin.css';
@@ -10,7 +11,7 @@ const AddAdmin = () => {
 
     const onSubmit = data =>{
         document.getElementById("loading").style.display = 'block';
-        fetch("https://travel-agencyy.herokuapp.com/addAdmin/"+data.email)
+        fetch(serverUrl+"/addAdmin/"+data.email)
         .then(res => res.json())
         .then(data => {
             if(data){

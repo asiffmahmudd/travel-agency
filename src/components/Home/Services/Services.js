@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { serverUrl } from '../../../ServerUrl';
 import ServiceItem from './ServiceItem/ServiceItem';
 
 const Services = () => {
@@ -6,7 +7,7 @@ const Services = () => {
     
     useEffect(() => {
         document.getElementById("loading").style.display = 'block';
-        fetch('https://travel-agencyy.herokuapp.com/services')
+        fetch(serverUrl+'/services')
         .then(res => res.json())
         .then(data => {
             document.getElementById("loading").style.display = 'none';
